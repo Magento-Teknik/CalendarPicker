@@ -116,6 +116,7 @@ export function makeStyles(params) {
       width: 50 * scaler,
       height: 40 * scaler,
       backgroundColor: "rgba(0,0,0,0.0)",
+      paddingLeft: 20,
     },
 
     startDayWrapper: {

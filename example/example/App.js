@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,33 +6,39 @@ import {
   Button,
   TextInput,
   Switch,
-} from 'react-native';
-import moment from 'moment';
-import CalendarPicker from './CalendarPicker';
-
+} from "react-native";
+import moment from "moment";
+import CalendarPicker from "./CalendarPicker";
+//TEST
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    let minDate = moment().subtract(15, 'day');
+    let minDate = moment().subtract(15, "day");
     let day = minDate.clone();
     let customDatesStyles = [];
     for (let i = 0; i < 30; i++) {
       customDatesStyles.push({
         date: day.clone(),
         // Random colors
-        style: {backgroundColor: '#'+('#00000'+(Math.random()*(64<<22)|32768).toString(16)).slice(-6)},
-        textStyle: {color: 'black'}, // sets the font color
+        style: {
+          backgroundColor:
+            "#" +
+            (
+              "#00000" + ((Math.random() * (64 << 22)) | 32768).toString(16)
+            ).slice(-6),
+        },
+        textStyle: { color: "black" }, // sets the font color
         containerStyle: [], // extra styling for day container
       });
-      day.add(1, 'day');
+      day.add(1, "day");
     }
 
     this.state = {
       customDatesStyles,
       enableRangeSelect: false,
       minDate,
-      maxDate: moment().add(90, 'day'),
+      maxDate: moment().add(90, "day"),
       minRangeDuration: "1",
       maxRangeDuration: "5",
       selectedStartDate: null,
@@ -49,8 +55,7 @@ export default class App extends Component {
       this.setState({
         selectedStartDate: date,
       });
-    }
-    else {
+    } else {
       this.setState({
         selectedEndDate: date,
       });
@@ -90,18 +95,18 @@ export default class App extends Component {
     });
   }
 
-  customDayHeaderStylesCallback({dayOfWeek, month, year}) {
-    switch(dayOfWeek) {
+  customDayHeaderStylesCallback({ dayOfWeek, month, year }) {
+    switch (dayOfWeek) {
       case 4: // Thursday
         return {
           style: {
             borderRadius: 12,
-            backgroundColor: 'cyan',
+            backgroundColor: "cyan",
           },
           textStyle: {
-            color: 'blue',
-            fontWeight: 'bold',
-          }
+            color: "blue",
+            fontWeight: "bold",
+          },
         };
     }
   }
@@ -117,8 +122,12 @@ export default class App extends Component {
       selectedStartDate,
       selectedEndDate,
     } = this.state;
-    const formattedStartDate = selectedStartDate ? selectedStartDate.format('YYYY-MM-DD') : '';
-    const formattedEndDate = selectedEndDate ? selectedEndDate.format('YYYY-MM-DD') : '';
+    const formattedStartDate = selectedStartDate
+      ? selectedStartDate.format("YYYY-MM-DD")
+      : "";
+    const formattedEndDate = selectedEndDate
+      ? selectedEndDate.format("YYYY-MM-DD")
+      : "";
 
     return (
       <View style={styles.container}>
@@ -140,14 +149,18 @@ export default class App extends Component {
         />
 
         <View style={styles.topSpacing}>
-          <Text style={styles.text}>Selected (Start) date:  { formattedStartDate }</Text>
-          { !!formattedEndDate &&
-            <Text style={styles.text}>Selected End date:  { formattedEndDate }</Text>
-          }
+          <Text style={styles.text}>
+            Selected (Start) date: {formattedStartDate}
+          </Text>
+          {!!formattedEndDate && (
+            <Text style={styles.text}>
+              Selected End date: {formattedEndDate}
+            </Text>
+          )}
         </View>
 
         <View style={styles.topSpacing}>
-          <Button onPress={this.clear} title="Clear Selection"/>
+          <Button onPress={this.clear} title="Clear Selection" />
         </View>
 
         <View style={styles.topSpacing}>
@@ -161,7 +174,7 @@ export default class App extends Component {
           value={enableRangeSelect}
         />
 
-        { enableRangeSelect &&
+        {enableRangeSelect && (
           <View>
             <Text style={styles.text}>minRangeDuration:</Text>
             <TextInput
@@ -179,7 +192,7 @@ export default class App extends Component {
               keyboardType={"number-pad"}
             />
           </View>
-        }
+        )}
       </View>
     );
   }
@@ -188,12 +201,12 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     marginTop: 100,
-    alignItems: 'center',
+    alignItems: "center",
   },
   topSpacing: {
-    marginTop:20
+    marginTop: 20,
   },
   text: {
     fontSize: 24,
@@ -201,14 +214,14 @@ const styles = StyleSheet.create({
   textInput: {
     height: 40,
     fontSize: 24,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
   },
   headerWrapperStyle: {
-    backgroundColor: '#ffbdab',
+    backgroundColor: "#ffbdab",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingTop: 20,
     paddingBottom: 20,
-  }
+  },
 });

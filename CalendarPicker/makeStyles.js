@@ -79,7 +79,6 @@ export function makeStyles(params) {
     daysWrapper: {
       alignSelf: "center",
       justifyContent: "center",
-      paddingLeft: 25 * scaler,
     },
 
     dayLabels: {

@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
 import Controls from './Controls';
+import Calendar from '../../../assets/svg/calendar.svg'
 
 export default function HeaderControls(props) {
   const {
@@ -49,15 +50,12 @@ export default function HeaderControls(props) {
 
   return (
     <View style={[styles.headerWrapper, headerWrapperStyle]}>
-      <Controls
-        disabled={disablePreviousMonth}
-        label={previousTitle}
-        component={previousComponent}
-        onPressControl={onPressPrevious}
-        styles={styles.previousContainer}
-        textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
-      />
-      <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
+      
+      <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle,{marginHorizontal:5}]}>
+        <View style={{marginRight:10}}>
+          <Calendar />
+        </View>
+        
         <TouchableOpacity onPress={onPressMonth}>
           <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
             { monthName }
@@ -69,14 +67,29 @@ export default function HeaderControls(props) {
           </Text>
         </TouchableOpacity>
       </View>
+      <View style={{flexDirection:'row'}}>
+        <View style={{marginHorizontal:30}}>
+<Controls
+        disabled={disablePreviousMonth}
+        label={previousTitle}
+        component={previousComponent}
+        onPressControl={onPressPrevious}
+        textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
+        styles={{marginHorizantal:5}}
+      />
+        </View>
+      <View style={{marginHorizontal:10}}>
       <Controls
         disabled={disableNextMonth}
         label={nextTitle}
         component={nextComponent}
         onPressControl={onPressNext}
-        styles={styles.nextContainer}
         textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
       />
+      </View>
+      
+      </View>
+
     </View>
   );
 }

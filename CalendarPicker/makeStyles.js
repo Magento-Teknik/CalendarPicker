@@ -114,8 +114,8 @@ export function makeStyles(params) {
     startDayWrapper: {
       width: 50*scaler,
       height: 30*scaler,
-      borderTopLeftRadius: 20*scaler,
-      borderBottomLeftRadius: 20*scaler,
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
@@ -124,8 +124,8 @@ export function makeStyles(params) {
     endDayWrapper: {
       width: 50*scaler,
       height: 30*scaler,
-      borderTopRightRadius: 20*scaler,
-      borderBottomRightRadius: 20*scaler,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
